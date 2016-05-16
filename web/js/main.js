@@ -27,6 +27,30 @@ $(document).ready(function () {
             $('#' + id).addClass('activElem');
 
     });
+    var emptyElem= function()
+    {
+        var value;
+        $('td').each(function () {
+
+
+            if($(this).html()==''){
+             value=$(this);
+                return false;
+
+            }
+        });
+        return value;
+    }
+    $('#ButtonAdd').click(function () {
+     var that=$("#FigureAdd option:selected").val();
+        $('.activElem').removeClass('activElem');
+        $('.'+that).clone().
+            addClass('activElem').
+            removeAttr('id').
+            attr('id', token()).prependTo(emptyElem());
+
+
+    });
     var rand = function () {
         return Math.random().toString(36).substr(2);
     };

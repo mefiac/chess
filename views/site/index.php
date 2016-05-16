@@ -5,7 +5,12 @@
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
+<div style="display: none">
 
+    <div  id="12" class="elem 1">П</div>
+    <div  id="12" class="elem 2">К</div>
+    <div  id="12" class="elem 3">Ф</div>
+</div>
     <div class="jumbotron">
         <div class="well">
             <p>Фигура <select id="FigureAdd">
@@ -17,7 +22,7 @@ $this->title = 'My Yii Application';
         </div>
 
       <table class="" border="1" id="tab">
-          <tr> <td> <div id="12" class="elem" style="width: 50px;height: 50px; background: #DDE0E0;"></div></td><td></td><td></td></tr>
+          <tr> <td></td><td></td><td></td></tr>
           <tr><td></td><td></td><td></td></tr>
           <tr><td></td><td></td><td></td></tr>
       </table>
