@@ -2,12 +2,16 @@
 
 namespace app\controllers;
 
+
+use app\models\ContactForm;
+use app\models\Figures;
+use app\models\LoginForm;
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use yii\redis;
+use yii\web\Controller;
+
 
 class SiteController extends Controller
 {
@@ -49,7 +53,32 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $list = [];
+        $figure = new Figures();
+        $figure = $figure::find()->asArray()->all();
+        foreach ($figure as $val) {
+            $list[$val['pos']] = $val;
+        }
+        Figures::getDb()->executeCommand('FLUSHDB');
+        return $this->render('index', ['figure' => $list]);
+    }
+
+    public function actionSave()
+    {
+        $post = Yii::$app->request->post();
+
+        foreach ($post["obj"] as $obj) {
+            if (!empty($obj['name'])) {
+                $figure = new Figures();
+                $figure->name = $obj['name'];
+                $figure->pos = $obj['pos'];
+                $figure->js_id = $obj['js_id'];
+                $figure->save();
+            }
+        }
+
+
+        return true;
     }
 
     public function actionLogin()
