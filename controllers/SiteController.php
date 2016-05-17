@@ -80,7 +80,20 @@ class SiteController extends Controller
 
         return true;
     }
+    private static function Psk()
+    {
+        return 'Пешка';
+    }
+    public function actionCode()
+    {   $post = Yii::$app->request->post()['val'];
+        switch ($post) {
+            case 1:
+                return SELF::Psk();
+                break;
 
+        }
+        return false;
+    }
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {

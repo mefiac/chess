@@ -9,8 +9,9 @@
                     addClass('activElem').
                     removeAttr('id').
                     attr('id', token()).prependTo($(this));
-                elem.detach();
 
+
+                elem.detach();
             } else {
 
                 var id = event.target.id;
@@ -51,7 +52,7 @@
 
             }
         });
-        console.log();
+
     });
     var emptyElem = function () {
         var value;
@@ -74,6 +75,16 @@
             removeClass(that).
             removeAttr('id').
             attr('id', token()).prependTo(emptyElem());
+
+            $.ajax({
+                url: '/index.php?r=site%2Fcode',
+                data: { val:that, _csrf: $("[name='_csrf']").val()},
+                type: 'POST',
+                success: function (data) {
+                   if(data!=false) alert(data);
+                }
+            });
+
 
 
     });

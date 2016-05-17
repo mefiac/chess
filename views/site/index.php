@@ -42,11 +42,11 @@ $county = 3;
                             <?php if (!empty($figure[$count])) {
                                 if ($figure[$count]['name'] == 1) {
                                     ?>
-                                    <div id="<?= $figure[$count]['js_id'] ?>" class="elem 1" value="1">П</div>
+                                    <div id="<?= $figure[$count]['js_id'] ?>" class="elem 1" value="1">пешка</div>
                                 <?php } elseif ($figure[$count]['name'] == 2) { ?>
-                                    <div id="<?= $figure[$count]['js_id'] ?>" class="elem 2" value="2">К</div>
+                                    <div id="<?= $figure[$count]['js_id'] ?>" class="elem 2" value="2">ферзь</div>
                                 <?php } else { ?>
-                                    <div id="<?= $figure[$count]['js_id'] ?>" class="elem 3" value="3">Ф</div>
+                                    <div id="<?= $figure[$count]['js_id'] ?>" class="elem 3" value="3">король</div>
                                 <?php } ?>
                             <?php } ?>
                         </td>
